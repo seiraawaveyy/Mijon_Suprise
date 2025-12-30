@@ -3,26 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUPRISEEEE</title>
 
 <style>
 html, body {
     margin: 0;
+    padding: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    min-height: 100svh; /* aman iOS */
+}
+
+body {
+    overflow: hidden;
 }
 
 .container {
-    width: 100%;
-    height: 100%;
     position: relative;
+    width: 100%;
+    height: 100svh;
 }
 
+/* GAMBAR FULLSCREEN */
 img {
     position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: opacity 1s ease;
+    transition: opacity 1.2s ease;
 }
 
 /* SURAT DI ATAS */
@@ -30,6 +39,17 @@ img {
     z-index: 2;
     cursor: pointer;
 }
+
+#surat {
+    animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
 
 /* SURPRISE DI BAWAH */
 #suprise {
@@ -42,8 +62,8 @@ img {
 <body>
 
 <div class="container">
-    <img src="Surat.png" id="surat">
-    <img src="Suprise.png" id="suprise">
+    <img src="Surat.png" id="surat" alt="Surat">
+    <img src="Suprise.png" id="suprise" alt="Suprise">
 </div>
 
 <script>
@@ -51,16 +71,12 @@ const surat = document.getElementById("surat");
 const suprise = document.getElementById("suprise");
 
 surat.addEventListener("click", () => {
-    // fade surat
     surat.style.opacity = "0";
-
-    // tampilkan surprise
     suprise.style.opacity = "1";
 
-    // setelah animasi, surat benar-benar disembunyikan
     setTimeout(() => {
         surat.style.display = "none";
-    }, 1000);
+    }, 1200);
 });
 </script>
 
