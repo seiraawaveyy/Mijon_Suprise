@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1s ease;
+}
+
+/* SURAT DI ATAS */
+#surat {
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* SURPRISE DI BAWAH */
+#suprise {
+    z-index: 1;
+    opacity: 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <img src="Surat.png" id="surat">
+    <img src="Suprise.png" id="suprise">
+</div>
+
+<script>
+const surat = document.getElementById("surat");
+const suprise = document.getElementById("suprise");
+
+surat.addEventListener("click", () => {
+    // fade surat
+    surat.style.opacity = "0";
+
+    // tampilkan surprise
+    suprise.style.opacity = "1";
+
+    // setelah animasi, surat benar-benar disembunyikan
+    setTimeout(() => {
+        surat.style.display = "none";
+    }, 1000);
+});
+</script>
+
+</body>
+</html>

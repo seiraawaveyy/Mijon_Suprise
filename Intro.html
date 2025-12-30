@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hawo</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: url("Fireworks.png") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* GLASS BOX */
+.box {
+    text-align: center;
+    padding: 24px;
+    max-width: 500px;
+}
+
+/* TEKS */
+.line {
+    font-size: 22px;
+    color: #FFFFFF;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: floatIn 1.8s ease forwards;
+    margin-bottom: 12px;
+}
+
+/* ANIMASI */
+@keyframes floatIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TOMBOL */
+#btn {
+    margin-top: 30px;
+    padding: 16px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 14px;
+    background: #4FB8FF;
+    color: white;
+    cursor: pointer;
+    display: none;
+    transition: 0.3s;
+}
+
+#btn:hover {
+    background: #5ab8ff;
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="box"></div>
+
+<script>
+const texts = [
+    "Haii…",
+    "Sera di sini…",
+    "Aku…",
+    "ingin memberikan sebuah surat untukmu…"
+];
+
+const box = document.getElementById("box");
+
+texts.forEach((text, index) => {
+    const p = document.createElement("div");
+    p.className = "line";
+    p.textContent = text;
+    p.style.animationDelay = `${index * 1.8}s`;
+    box.appendChild(p);
+});
+
+setTimeout(() => {
+    const btn = document.createElement("button");
+    btn.id = "btn";
+    btn.innerHTML = "💌 Lihat";
+    btn.onclick = () => window.location.href = "Suprise.html";
+    btn.style.display = "inline-block";
+    box.appendChild(btn);
+}, texts.length * 1800);
+</script>
+
+</body>
+</html>
